@@ -14,7 +14,6 @@
 					<ul>
 						<li v-for="food in item.foods">
 						    <img :src="food.icon">
-
 						    <span>价格：{{food.price}}</span>
 						    <span>描述：{{food.description}}</span>	
 						    <span>{{food.name}}</span>
