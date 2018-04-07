@@ -21,7 +21,7 @@ const actions={
 
        axios.get('/api/seller').then(resp => {
 
-       	 console.log(resp);
+       	 //console.log(resp);
 
        	 //commit(types.GET_SELLER);
 

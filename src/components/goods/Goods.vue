@@ -10,13 +10,18 @@
 		<div class="foods-wrapper">
 			<ul>
 				<li v-for="item in goods">
-					<h1>{{item.name}}</h1>
+					<h1>{{item.name}}<span>大家喜欢吃，才叫真好吃</span></h1>
 					<ul>
-						<li v-for="food in item.foods">
-						    <img :src="food.icon">
-						    
-						    <span>价格：{{food.price}}</span>	
-						    <span>{{food.name}}</span>
+						<li class="flist" v-for="food in item.foods">
+						    <div class="goodsinfo">
+						    	<img :src="food.icon">
+						    	<div class="dec">
+						    	    <p class="fname">{{food.name}}</p>
+						    	    <p class="finfo">{{food.info}}</p>
+						    	    <p class="fs">月售{{food.sellCount}}份</p>
+						    		<p class="price">￥{{food.price}}</p>
+						    	</div>
+						    </div>
 						</li>
 					</ul>
 				</li>
@@ -43,29 +48,70 @@
 		bottom: 4em;
 		overflow: hidden;
 		.menu-wrapper{
-           flex: 0 0 10em;
-           background-color: MistyRose;
+           flex: 0 0 7em;
+           background-color: #f8f8f8;
            li{
            	height: 3em;
            	line-height: 3em;
            	border-bottom: 1px solid #cecece;
            	text-align: center;
+           	font-size: .32rem;
            }
 		}
 		.foods-wrapper{
+			.flist{
+				margin-top: 1em;
+			}
 			flex: 1;
 			margin-left: .7em;
 			h1{
-               height: 3em;
-               line-height: 3em;
-               padding-left: 1em;
+               height: 2em;
+               line-height: 2em;
+               padding-left: 0.5em;
+               font-weight: 700;
+               font-size: 16px;
+               border-bottom: 1px solid #cccccc;
+               color: #666;
 			}
-			li{
-
+			h1>span{
+               font-size: 14px;
+               color: #cccccc;
+               padding-left: 0.8em;
+			}
+			.goodsinfo
+			{
+				display: flex;
+			}
+			.goodsinfo .dec{
+				flex: 1;
+				padding-left:0.5em;
+				.fname{
+					font-weight: 700;
+				}
+				.finfo{
+					height: 1em;
+					font-size: 10px;
+					color: #C0C0C0;
+					overflow : hidden;
+					margin-top: 0.4em;
+					text-overflow: ellipsis;
+					display: -webkit-box;
+					-webkit-line-clamp: 1;
+					-webkit-box-orient: vertical;
+				}
+				.fs{
+					margin-top: 0.4em;
+					color: #A9A9A9;
+					font-size: .266667rem;
+				}
+				.price{
+					color: Coral;
+					margin-top: 0.4em;
+				}
 			}
 			img{
-				width: 4em;
-				height: 4em;
+				width: 4.5em;
+				height: 4.5em;
 			}
 		}
 	}
