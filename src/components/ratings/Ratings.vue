@@ -90,7 +90,7 @@
 	    },
 	    filters:{
             dateFrm: el => {
-	            return moment(el).format("YYYY-MM-DD HH:mm:ss");
+	            return moment(el).format("YYYY-MM-DD HH:mm:ss");  //转换时间戳为时间格式
 	        }
 	    }
 	}
