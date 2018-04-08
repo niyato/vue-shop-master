@@ -2,15 +2,15 @@
 	<div class="goods">
 		<div class="menu-wrapper">
 			<ul>
-				<li v-for="item in goods">
-					{{item.name}}
+				<li v-for="(item,index) in goods" @click="toType(index)" :class="{'active':index==aclass}">
+					<a :href="'#'+index">{{item.name}}</a>
 				</li>
 			</ul>
 		</div>
 		<div class="foods-wrapper">
 			<ul>
 				<li v-for="item in goods">
-					<h1>{{item.name}}<span>大家喜欢吃，才叫真好吃</span></h1>
+					<h1 :id="item.type">{{item.name}}<span v-if="item.type==0">大家喜欢吃，才叫真好吃</span></h1>
 					<ul>
 						<li class="flist" v-for="food in item.foods">
 						    <div class="goodsinfo">
@@ -27,26 +27,46 @@
 				</li>
 			</ul>
 		</div>
+		<v-footer></v-footer>
 	</div>
 </template>
+
 <script>
     import {mapGetters} from 'vuex'
+    import Footer from '../../components/footer/Footer.vue'
+
 	export default{
+		components:{
+            'v-footer': Footer
+		},
 		created(){
 			this.$store.dispatch('getGoods');
 		},
 		computed:mapGetters([
-             'goods'
-		])
+             'goods',
+             'aclass'
+		]),
+		methods:{
+			toType:function(index){
+			    var obj = {}
+			    obj.index = index;
+			    this.$store.dispatch('aclass',obj);
+			    // this.$nextTick(function () {
+			    //     alert(index);
+			    // })
+	      	}
+		}
 	}
 </script>
 <style lang="less" scoped="">
+    .active{
+    	background: #ffffff;
+    }
 	.goods{
 		display: flex;
 		position: absolute;
 		top: 6.6em;
 		bottom: 4em;
-		overflow: hidden;
 		.menu-wrapper{
            flex: 0 0 7em;
            background-color: #f8f8f8;
@@ -57,6 +77,9 @@
            	text-align: center;
            	font-size: .32rem;
            }
+           li>a{
+           	display: block;
+           }
 		}
 		.foods-wrapper{
 			.flist{
@@ -64,17 +87,19 @@
 			}
 			flex: 1;
 			margin-left: .7em;
+			overflow-y: auto;
 			h1{
                height: 2em;
                line-height: 2em;
                padding-left: 0.5em;
                font-weight: 700;
-               font-size: 16px;
+               font-size: .32rem;
                border-bottom: 1px solid #cccccc;
                color: #666;
+               margin-top: 1em;
 			}
 			h1>span{
-               font-size: 14px;
+               font-size: .32rem;
                color: #cccccc;
                padding-left: 0.8em;
 			}

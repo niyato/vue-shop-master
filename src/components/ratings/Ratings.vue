@@ -99,6 +99,13 @@
 </script>
 
 <style lang="less" scoped="">
+    .ratings{
+    	position: absolute;
+	    top: 7em;
+	    width: 100%;
+	    overflow-y: auto;
+	    bottom: 2em;
+    }
 	.rh{
 		height: 5em;
 		line-height: 1.5em;

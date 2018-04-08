@@ -23,6 +23,15 @@ time, mark, audio, video, input {
     vertical-align: baseline;
 }
 
+body {
+
+ -webkit-overflow-scrolling: touch;
+
+ overflow-scrolling: touch;
+ overflow-x: hidden;
+
+}
+
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure,
 footer, header, menu, nav, section {

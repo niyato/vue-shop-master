@@ -56,6 +56,12 @@
     body{
     	background: #666;
     }
+    .seller{
+    	position: absolute;
+	    top: 7em;
+	    overflow-y: auto;
+	    bottom: 2em;
+    }
 	.hader{
 		margin-bottom: .266667rem;
 		margin-bottom: 2.666667vw;
@@ -123,6 +129,9 @@
 		    font-size: .346667rem;
 		    -webkit-align-items: center;
 		    align-items: center;
+		}
+		img{
+			width: 100%;
 		}
 	}
 
